@@ -1,0 +1,41 @@
+barrios1
+
+	clientes 	 	2,763 	InnoDB 	latin1_swedish_ci 	384.0 KB 	-
+	detalle 	 	7,442 	InnoDB 	latin1_swedish_ci 	1.6 MB 	-
+	factura 	 	3,411 	InnoDB 	latin1_swedish_ci 	384.0 KB 	-
+	otrospagos 	 	7,460 	InnoDB 	latin1_swedish_ci 	1.7 MB 	-
+
+man	numerocomprobante 	3,467 	InnoDB 	latin1_swedish_ci 	112.0 KB 	-
+man	contrato 	 	1 	InnoDB 	latin1_swedish_ci 	32.0 KB 	-
+man	adjudicacion 	 	6 	InnoDB 	latin1_swedish_ci 	32.0 KB 	-
+	formaspago 	 	0 	InnoDB 	latin1_swedish_ci 	32.0 KB 	-
+	barrios 	 	9 	InnoDB 	latin1_swedish_ci 	16.0 KB 	-
+	items 	 		22 	InnoDB 	latin1_swedish_ci 	16.0 KB 	-
+	pagosadjudicacion 	0 	InnoDB 	latin1_swedish_ci 	48.0 KB 	-
+	recibo 	 		0 	InnoDB 	latin1_swedish_ci 	80.0 KB 	-
+	usuario 	 	6 	
+
+
+
+ 	
+
+
+
+
+barrios
+
+	clientes 	 	1,224 	InnoDB 	latin1_swedish_ci 	208.0 KB 	-
+	detalle 	 	9,212 	InnoDB 	latin1_swedish_ci 	1.7 MB 	-
+	factura 	 	5,424 	InnoDB 	latin1_swedish_ci 	576.0 KB 	-
+	numerocomprobante 	5,431 	InnoDB 	latin1_swedish_ci 	160.0 KB 	-
+	otrospagos 	 	5,832 	InnoDB 	latin1_swedish_ci 	1.7 MB 	-
+
+
+man	contrato 	 	1,027 	InnoDB 	latin1_swedish_ci 	112.0 KB 	-
+man	adjudicacion 	 	12,594 	InnoDB 	latin1_swedish_ci 	1.8 MB 	-
+	formaspago 	 	3,397 	InnoDB 	latin1_swedish_ci 	272.0 KB 	-
+	barrios 	 	8 	InnoDB 	latin1_swedish_ci 	16.0 KB 	-
+	items 	 		22 	InnoDB 	latin1_swedish_ci 	16.0 KB 	-
+	pagosadjudicacion 	0 	InnoDB 	latin1_swedish_ci 	48.0 KB 	-
+	recibo 	 		0 	InnoDB 	latin1_swedish_ci 	80.0 KB 	-
+	usuario 	 	6 	InnoDB 	latin1_swedish_ci	
