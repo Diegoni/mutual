@@ -12,54 +12,30 @@
 <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 <title>Conciliador BD Mutual San Cayetano</title>
 
-<link rel="stylesheet" type="text/css" href="css/main.css" media="screen" />
-<script src="js/main.js"></script>
+<!-- Necesario para que funcione Jquery UI y Bootstrap -->
 <script src="bootstrap/js/jquery.js"></script>
-
 
 <!--------------------------------------------------------------------
 ----------------------------------------------------------------------
-							JQuery UI
+						Css y Js creados 
+----------------------------------------------------------------------
+--------------------------------------------------------------------->
+
+<link rel="stylesheet" type="text/css" href="css/main.css" media="screen" />
+<script src="js/main.js"></script>
+
+<!--------------------------------------------------------------------
+----------------------------------------------------------------------
+						JQuery UI
 ----------------------------------------------------------------------
 --------------------------------------------------------------------->
 
 <link rel="stylesheet" href="ui/jquery-ui.css" />
 <script src="ui/jquery-ui.js"></script>
 
-<? 
-		$query="SELECT * FROM `clientes` GROUP BY apellido ASC";
-		mysql_query("SET NAMES 'utf8'");
-		$result=mysql_query($query);
-		
-	?>
-	
 <!--------------------------------------------------------------------
 ----------------------------------------------------------------------
-					Autocomplete usando jquery ui
-----------------------------------------------------------------------
---------------------------------------------------------------------->	
-
-<script>
-
-  $(function() {
-		var availableTags = new Array();
-		var i=0;
-		
-	"<? do {?> "
-		availableTags[i] = "<? echo $resultado['apellido']; ?>";
-		i =i+1
-		"<? } while ($resultado= mysql_fetch_array($result));?>"
-    
-    $( "#tags" ).autocomplete({
-      source: availableTags
-    });
-  });
-</script>
-
-
-<!--------------------------------------------------------------------
-----------------------------------------------------------------------
-							Bootstrap
+						Bootstrap
 ----------------------------------------------------------------------
 --------------------------------------------------------------------->
 
@@ -69,7 +45,40 @@
 
 <script src="bootstrap/js/bootstrap.js"></script>
 
-<!------------------------------------------------------------------->
+	
+<!--------------------------------------------------------------------
+----------------------------------------------------------------------
+						Funciones
+----------------------------------------------------------------------
+--------------------------------------------------------------------->	
+<!-- Consulta que trae todos los clientes para usar en el autocomplete -->
+<? 
+	$query="SELECT * FROM `clientes` GROUP BY apellido ASC";
+	mysql_query("SET NAMES 'utf8'");
+	$result=mysql_query($query);
+		
+?>
+
+<!-- Funcion que llena el array de Autocomplete -->
+<script>
+
+  $(function() {
+		var availableTags = new Array();
+		var i=0;
+		
+	"<? do {?> "
+		availableTags[i] = "<? echo $resultado['apellido']; ?>";
+		i =i+1
+	"<? } while ($resultado= mysql_fetch_array($result));?>"
+    
+    $( "#tags" ).autocomplete({
+      source: availableTags
+    });
+  });
+</script>
+
+
+<!-- Funcion que controla que no sean mas de 3 caracteres en el input buscar -->
 <script>
 function control(){
 		var cliente = buscar.cliente.value;
@@ -82,9 +91,9 @@ function control(){
 		}
 </script>
 
+<!-- Funcion esconder o mostrar un div mediante un href, utilizado para ver facturas -->
 <script type="text/javascript">
- 
-$(document).ready(function(){
+ $(document).ready(function(){
  
         $(".slidingDiv").hide();
         $(".show_hide").show();
@@ -94,14 +103,10 @@ $(document).ready(function(){
     });
  
 });
- 
 </script>
 
-
-
-
-
 </head>
+
 <center>
 <body>
 

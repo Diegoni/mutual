@@ -321,7 +321,7 @@ include_once("menu.php");
  	<a href="index.php">Volver</a>
 	<? 	} ?>
 
-	</div><!-- cierra clase span8-->
+	</div><!-- cierra clase span9-->
 	</div><!-- cierra clase row-->
 	
 	
