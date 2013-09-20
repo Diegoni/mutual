@@ -35,7 +35,7 @@ include_once("menu.php");
 	$numero_filas = mysql_num_rows($result);
 		
 		if($numero_filas==0){
-			echo '<h4>No hay registros que coincidan con los datos ingresados</h4><a class="btn btn-danger" href="buscar.php?bandera=1">Volver</a>';
+			echo '<h4>No hay registros que coincidan con los datos ingresados</h4><a class="btn btn-danger" href="buscar.php">Volver</a>';
 		}else{
 		
 		echo "$numero_filas Registros\n";

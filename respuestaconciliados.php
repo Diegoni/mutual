@@ -2,7 +2,7 @@
 <?php
 include_once("menu.php");
 ?>
-
+<div class="span9">
 <?php      
 
 
@@ -13,26 +13,43 @@ include_once("menu.php");
  	{
 	//asigno las variables
  	$dni = $_POST['dninput'];
-	echo $dni;
 
  	//$nombre=$_POST['nombre'];
 
-	$query="SELECT * FROM `clientes` where dni=".$dni." ORDER BY apellido ASC";
-        $result=mysql_query($query);
-
+	$query="SELECT * FROM `log_clientes_conciliados` where dni=".$dni." ORDER BY apellido ASC";
+    $result=mysql_query($query);
+	$numero_filas = mysql_num_rows($result);
+	
+	if($numero_filas==0){
+			echo '<h4>No hay registros que coincidan con ' . $dni . '</h4><a class="btn btn-danger" href="conciliados.php">Volver</a>';
+		}
+	
+	echo '<table class="table table-striped">';
+	//Titulos de la tabla
+	echo '<tr class="info">';
+	echo '<td>ID-anterior</td>';
+	echo '<td>ID-nuevo</td>';
+	echo '<td>Nombre</td>';
+	echo '<td>Apellido</td>';
+	echo '<td>DNI</td>';
+		
+	echo '</tr>';
+	
+	
 	while ($rows = mysql_fetch_array($result))
-
  	{
  	echo '<tr>';
- 	echo '<td><input type="checkbox" value="' . $rows['nombre'] . '" name="RFQ[]"></td>';
+	echo '<td>' . $rows['idclientes'] . '</td>';
+	echo '<td>' . $rows['idclientes_asignado'] . '</td>';
  	echo '<td>' . $rows['nombre'] . '</td>';
  	echo '<td>' . $rows['apellido'] . '</td>';
  	echo '<td>' . $rows['dni'] . '</td>';
  	echo '</tr>';
  	}
  	echo '</table>';
+	
  	echo $rows;
-
+	echo '<a class="btn btn-danger" href="conciliados.php">Volver</a>';
  	}
  	else
  	{
@@ -41,7 +58,9 @@ include_once("menu.php");
  	}
 
 ?>
+</div><!-- cierra clase span9-->
 
+</div><!-- cierra clase row-->
 
 <?php
 include_once("footer.php");

@@ -1,12 +1,6 @@
 <html>
 <head>
-<? 
-//configuracion de base de datos
-include_once("config/database.php"); 
-
-$subtotal=0;
-$total=0;
-?>
+<? include_once("config/database.php"); ?>
 <!--BEGIN META TAGS-->
 <META NAME="keywords" CONTENT="">
 <META NAME="description" CONTENT="Conciliador de BD Mutual San Cayetano by TMS Group">
@@ -62,10 +56,6 @@ $total=0;
 	$query="SELECT * FROM `clientes` GROUP BY apellido ASC";
 	mysql_query("SET NAMES 'utf8'");
 	$result=mysql_query($query);
-	
-	$query="SELECT * FROM `log_clientes_conciliados` GROUP BY dni ASC";
-	mysql_query("SET NAMES 'utf8'");
-	$DNI=mysql_query($query);
 		
 ?>
 
@@ -85,20 +75,6 @@ $total=0;
       source: availableTags
     });
   });
-  
-    $(function() {
-		var DNIconciliados = new Array();
-		var i=0;
-		
-	"<? do {?> "
-		DNIconciliados[i] = "<? echo $DNIs['dni']; ?>";
-		i =i+1
-	"<? } while ($DNIs= mysql_fetch_array($DNI));?>"
-    
-    $( "#dninput" ).autocomplete({
-      source: DNIconciliados
-    });
-  });
 </script>
 
 
@@ -113,17 +89,6 @@ function control(){
 			}
 
 		}
-		
-<!-- Funcion solo permite ingresar numeros, controla el ascii ingresado -->
-function isNumberKey(evt)
-      {
-         var charCode = (evt.which) ? evt.which : event.keyCode
-         if (charCode > 31 && (charCode < 48 || charCode > 57))
-            return false;
- 
-         return true;
-      }		
-	
 </script>
 
 <!-- Funcion esconder o mostrar un div mediante un href, utilizado para ver facturas -->
@@ -174,9 +139,9 @@ function isNumberKey(evt)
 		<div class="row">	
 		<div class="span3; menu">
 			<ul class="nav nav-pills nav-stacked">
-				<li><a  class="opciones" href="buscar.php?bandera=1"><i class="icon-search"></i> Buscar y Conciliar</a></li>
+				<li><a  class="opciones" href="buscar.php"><i class="icon-search"></i> Buscar y Conciliar</a></li>
 				<li><a  class="opciones" href="conciliados.php" ><i class="icon-list"></i> Listar Conciliados</a></li>
-				<li><a  class="opciones" href="buscar.php?bandera=2" ><i class="icon-archive"></i> Saldo clientes</a></li>
+				<li><a  class="opciones" href="" ><i class="icon-archive"></i> Saldo clientes</a></li>
 			</ul>
 			
 <!--
