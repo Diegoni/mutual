@@ -74,7 +74,7 @@ include_once("menu.php");
  	echo '</table>';
 	
 	//fin de la tabla, mando la el id del cliente seleccionado
-    echo '<input type="submit" class="btn" name="conciliar" value="conciliar"  id="conciliar" disabled>';
+    echo '<input type="submit" class="btn" name="c" value="conciliar"  id="conciliar" disabled>';
 	echo '<input type="hidden" name="busqueda" value="'.$cliente.'">';
 	echo '</form>';
 	}
@@ -177,140 +177,10 @@ include_once("menu.php");
 	echo "<h4>Hay clientes con el mismo dni: <a class='btn btn-danger' href='buscar.php?bandera=1&dato=".$dni."'>Conciliarlos</a></h4>";
 	}
 
-	}
-	
-	
-	
-/*--------------------------------------------------------------------
-----------------------------------------------------------------------
-			Tercer paso... Confirmacion de datos
-----------------------------------------------------------------------
---------------------------------------------------------------------*/	
-
-
-
-	else if (isset($_POST['confirmar']))
-	{
-	
-	$idsel=$_POST['idsel'];
-	$busqueda=$_POST['busqueda'];
-
-
-	echo "<strong>ID Seleccionado: </strong>".$idsel."<br>"; 
-	echo "<strong>Busqueda: </strong>".$busqueda."<br>"; 
-	echo "<h4>Los siguientes clientes han sido modificado <a href='#' class='show_hide' title='ver facturas'><i class='icon-chevron-sign-down'></i></a></h4>";
-	echo "<br>";
 
 	
-	
-	foreach($_POST['check'] as $valor){
-		
-		
-		//busco las facturas con el id del cliente seleccionados
-		$query="SELECT * FROM `factura` WHERE idclien='".$valor."' ";
-		mysql_query("SET NAMES 'utf8'");
-		$result=mysql_query($query);
-		
-		//-------------------------------------------------------------
-		//	Cambio de tabla a clientes conciliados - 3 passos        //
-		//-------------------------------------------------------------
-		
-		// 1 - selecciono el cliente
-		$query_cliente="SELECT * FROM `clientes` WHERE idclientes='".$valor."' ";
-		mysql_query("SET NAMES 'utf8'");
-		$cliente=mysql_query($query_cliente) or die(mysql_error());
-		$row_cliente = mysql_fetch_assoc($cliente);
-		
-		echo '<table class="table table-striped">';
-		echo '<tr class="info">';
-		echo '<td>ID</td>';	
-		echo '<td>Apellido</td>';	
-		echo '<td>Nombre</td>';
-		echo '<td>Telefono</td>';
-		echo '</tr>';
-		
-		echo '<tr>';
-		echo '<td>' . $row_cliente['idclientes'] . '</td>';
-		echo '<td>' . $row_cliente['apellido'] . '</td>';
-		echo '<td>' . $row_cliente['nombre'] . '</td>';
-		echo '<td>' . $row_cliente['telefono'] . '</td>';
-		echo '</tr>';
-		echo "</table>";
-	
 
-		// 2 - pasa el cliente a la tabla de log_clientes_conciliados
-		mysql_query("INSERT INTO `log_clientes_conciliados` (
-				idclientes,
-				idclientes_asignado,
-				nombre,
-				apellido,
-				telefono,
-				direccion,
-				dni,
-				email,
-				grupofamiliar,
-				idbarrio)
-			VALUES (
-				'".$row_cliente['idclientes']."',
-				'".$idsel."',
-				'".$row_cliente['nombre']."',
-				'".$row_cliente['apellido']."',
-				'".$row_cliente['telefono']."',
-				'".$row_cliente['Direccion']."',
-				'".$row_cliente['dni']."',
-				'".$row_cliente['email']."',
-				'".$row_cliente['grupofamiliar']."',
-				'".$row_cliente['idbarrio']."')	
-			") or die(mysql_error());
-			
-		// 3 - elimino el cliente de la tabla clientes			
-		/*mysql_query("DELETE FROM `clientes` WHERE idclientes='".$valor."' ") or die(mysql_error());*/
-		
-		echo "<div class='slidingDiv'>";
-		echo '<table>';
-		echo '<tr>';
-		echo '<td bgcolor="#fcf8e3">';
-		echo "Facturas: ";
-		echo '</td>';
-		
-		echo '<td colspan="3">';
-		while ($resultado= mysql_fetch_array($result)){
-			echo " - ";
-			echo $resultado['idfactura'];
-			//esta consulta	cambia el id del cliente en la factura
-			mysql_query("UPDATE `factura` SET idclien='".$idsel."' WHERE idfactura='".$resultado['idfactura']."' ") or die(mysql_error());
-		}
-		echo '</td>';
-		echo '</tr>';
-		echo '</table>';
-		echo "</div>";
-
-	}//cierra el foreach
-	
-	
-	}
- 	else
- 	{
-	// Boton de busqueda
-	?>
-	
- 	
-	<form class="form-horizontal" action="<?=$_SERVER['PHP_SELF']?>" method="post">
-	<div class="control-group">
-		<label class="control-label" for="inputEmail">Datos</label>
-		<div class="controls">
-			<input type="text" name="cliente" class="span4" placeholder="Ingrese datos">
-		</div>
-	</div>
-	
-	<div class="control-group">
-		<div class="controls">
-		<input type="submit" class="btn" name ="buscar" value="Buscar">
-		</div>
-	</div>
- 	</form>
- 	<a href="index.php">Volver</a>
-	<? 	} ?>
+ 	} ?>
 
 	</div><!-- cierra clase span9-->
 	</div><!-- cierra clase row-->
