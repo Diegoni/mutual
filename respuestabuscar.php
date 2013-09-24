@@ -35,7 +35,7 @@ include_once("menu.php");
 	$numero_filas = mysql_num_rows($result);
 		
 		if($numero_filas==0){
-			echo '<h4>No hay registros que coincidan con los datos ingresados</h4><a class="btn btn-danger" href="buscar.php?bandera=1">Volver</a>';
+			echo '<h4>No hay registros que coincidan con los datos ingresados</h4><a title ="Volver a inicio" class="btn btn-danger" href="buscar.php?bandera=1">Volver</a>';
 		}else{
 		
 		echo "$numero_filas Registros\n";
@@ -52,6 +52,7 @@ include_once("menu.php");
 	echo '<td>Tel</td>';
 	echo '<td>Direccion</td>';
 	echo '<td>ID</td>';
+	echo '<td></td>';
 	
 	echo '</tr>';
 	while ($rows = mysql_fetch_array($result))
@@ -65,15 +66,21 @@ include_once("menu.php");
  	echo '<td>' . $rows['apellido'] . '</td>';
  	echo '<td>' . $rows['telefono'] . '</td>';
  	echo '<td>' . $rows['Direccion'] . '</td>';
- 	echo '<td>' . $rows['idclientes'] . '</td>';
- 	echo '</tr>';
+ 	echo '<td>' . $rows['idclientes'] . '</td>';?>
+	<td><a href="#" title="Permite editar al cliente" onClick="abrirVentana('edit_cliente.php?id=<?echo $rows['idclientes'];?>')"><i class="icon-edit-sign"></i></a></td>
+	<? echo '</tr>';
  	}
  	echo '</table>';
 	//	echo $rows;
 	// Boton de conciliar
-        echo '<input type="submit" class="btn" name="conciliar" value="Conciliar"  id="conciliar" disabled>';
+	if($numero_filas>1){
+    echo '<input type="submit" class="btn" name="conciliar" value="Conciliar"  id="conciliar" disabled>';
 	echo '<input type="hidden" name="busqueda" value="'.$cliente.'">';
-        echo '</form>';
+    echo '</form>';
+	}
+	else{
+	echo 'No hay clientes para conciliar con el seleccionado <a title ="Volver a inicio" class="btn btn-danger" href="buscar.php?bandera=1">Volver</a>';
+	}
 	}
  	}
 	
@@ -273,7 +280,7 @@ include_once("menu.php");
 			") or die(mysql_error());
 			
 		// 3 - elimino el cliente de la tabla clientes			
-		/*mysql_query("DELETE FROM `clientes` WHERE idclientes='".$valor."' ") or die(mysql_error());*/
+		mysql_query("DELETE FROM `clientes` WHERE idclientes='".$valor."' ") or die(mysql_error());
 		
 		echo "<div class='slidingDiv'>";
 		echo '<table>';

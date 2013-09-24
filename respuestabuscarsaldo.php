@@ -55,6 +55,7 @@ include_once("menu.php");
 	echo '<td>Tel</td>';
 	echo '<td>Direccion</td>';
 	echo '<td>ID</td>';
+	echo '<td></td>';
 	
 	echo '</tr>';
 	
@@ -68,13 +69,14 @@ include_once("menu.php");
  	echo '<td>' . $rows['apellido'] . '</td>';
  	echo '<td>' . $rows['telefono'] . '</td>';
  	echo '<td>' . $rows['Direccion'] . '</td>';
- 	echo '<td>' . $rows['idclientes'] . '</td>';
- 	echo '</tr>';
+ 	echo '<td>' . $rows['idclientes'] . '</td>';?>
+	<td><a href="#" title="Permite editar al cliente" onClick="abrirVentana('edit_cliente.php?id=<?echo $rows['idclientes'];?>')"><i class="icon-edit-sign"></i></a></td>
+	<? echo '</tr>';
  	}
  	echo '</table>';
 	
 	//fin de la tabla, mando la el id del cliente seleccionado
-    echo '<input type="submit" class="btn" name="conciliar" value="conciliar"  id="conciliar" disabled>';
+    echo '<input type="submit" class="btn" name="conciliar" value="Buscar"  id="conciliar" disabled>';
 	echo '<input type="hidden" name="busqueda" value="'.$cliente.'">';
 	echo '</form>';
 	}
@@ -110,7 +112,7 @@ include_once("menu.php");
 	$result=mysql_query($query);
 	
 	//Titulos de la tabla
-	echo "<h2>Facturas de ".$busqueda.":</h2><br><br>";
+	echo "<h2>Facturas de ".$busqueda.": <a href='#' class='show_hide' title='ver detalle'><i class='icon-chevron-sign-down'></i></a></h2><br><br>";
 		
 	//recorro el arraw de las facturas
 	while ($rows = mysql_fetch_array($result))
@@ -125,6 +127,7 @@ include_once("menu.php");
 	echo '</table>';
 		
 		//cominenzo de la tabla de detalle factura
+		echo "<div class='slidingDiv'>";
 		echo '<table class="table table-striped table-hover">';
 		echo '<tr class="warning">';
 		echo '<td>Concepto</td>';
@@ -138,25 +141,30 @@ include_once("menu.php");
 		$query="SELECT * FROM `detalle` WHERE idfactura=".$idfactura." ORDER BY iddetalle ASC";
 		mysql_query("SET NAMES 'utf8'");
 		$detalle=mysql_query($query);	
-
+		
 		//recorro el arraw de los detalles de la factura
 		while ($detalles = mysql_fetch_array($detalle))
 		{
+			
 			echo '<tr>';
 			echo '<td>' . $detalles['nombreconcepto'] . '</td>';
 			echo '<td>$ ' . $detalles['monto'] . '</td>';
 			echo '<td>' . $detalles['formapago'] . '</td>';
 			$subtotal=$detalles['monto']+$subtotal;
 			echo '</tr>';	
+			
 		}
+		
 		echo '<tr>';
 		echo '<td><strong> Suma total </strong></td>';
-		echo '<td><strong>$ ' . $subtotal . '</strong></td>';
+		echo '<td title="Total de la factura ' . $rows['numerofactura'] . '"><strong>$ ' . $subtotal . '</strong></td>';
 		$total=$total+$subtotal;//total acumulado de las facturas
-		echo '<td>acum: $ ' . $total . ' </td>';
+		echo '<td title="El acumulado suma los totales de las facturas">acum: $ ' . $total . ' </td>';
 		$subtotal=0;//subtotal reiniciado para comenzar un nuevo bucle, con una nueva factura
 		echo '</tr>';	 
 		echo '</table>';
+		echo '</div>';
+		
 		echo '<br>';	
 		}
  	

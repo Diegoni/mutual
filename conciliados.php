@@ -6,7 +6,7 @@ include_once("menu.php");
 
  	<!-- Boton de busqueda-->
 	<h3> Listar Conciliados </h3>	
-	<form class="form-horizontal" action="respuestaconciliados.php" method="post" name="conciliados">
+	<form class="form-horizontal" action="respuestaconciliados.php" method="post" onsubmit="return controlDNi();" name="conciliados">
 	<div class="control-group">
 		<label class="control-label" for="inputEmail">Datos</label>
 		<div class="controls">
