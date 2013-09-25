@@ -78,6 +78,7 @@ include_once("head.php");
 		<div class="controls">
 			<input type="hidden" name="id" value="<?echo $id?>">
 			<input type="submit" class="btn" name="Modificar" value="modificar"  id="modificar">
+			<a class="btn btn-danger" href="" title="no guarda los cambios realizados" onClick="cerrarse()">volver</a>
 		</div>
 	</div>
 
