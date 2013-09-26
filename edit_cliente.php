@@ -57,7 +57,7 @@ include_once("head.php");
 		</div>
 	</div>
 	<div class="control-group">
-		<label class="control-label" for="inputTelefono" title="Solo números"><i class="icon-phone"></i> Telefono</label>
+		<label class="control-label" for="inputTelefono" title="Solo números y espacios"><i class="icon-phone"></i> Telefono</label>
 		<div class="controls">
 			<input type="text" class="span4" name="telefono" onkeypress="return isNumberKey(event)" value="<?echo $rows['telefono']?>">
 		</div>

@@ -81,7 +81,8 @@ function controlDNi(){
 function isNumberKey(evt)
       {
          var charCode = (evt.which) ? evt.which : event.keyCode
-         if (charCode > 31 && (charCode < 48 || charCode > 57))
+		 <!--Solo numero hasta el 31, con espacios en blanco hasta el 33 -->
+         if (charCode > 33 && (charCode < 48 || charCode > 57))
             return false;
  
          return true;
