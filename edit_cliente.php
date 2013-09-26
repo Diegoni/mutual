@@ -45,19 +45,19 @@ include_once("head.php");
 
 	<form class="form-horizontal" action="edit_cliente.php" method="post">
 	<div class="control-group">
-		<label class="control-label" for="inputNombre"><i class="icon-user"></i> Nombre</label>
+		<label class="control-label" for="inputNombre" title="Obligatorio"><i class="icon-user"></i> Nombre</label>
 		<div class="controls">
 			<input type="text" class="span4" name="nombre" value="<?echo $rows['nombre']?>" required>
 		</div>
 	</div>
 	<div class="control-group">
-		<label class="control-label" for="inputApellido"><i class="icon-group"></i> Apellido</label>
+		<label class="control-label" for="inputApellido" title="Obligatorio"><i class="icon-group"></i> Apellido</label>
 		<div class="controls">
 			<input type="text" class="span4" name="apellido" value="<?echo $rows['apellido']?>" required>	
 		</div>
 	</div>
 	<div class="control-group">
-		<label class="control-label" for="inputTelefono"><i class="icon-phone"></i> Telefono</label>
+		<label class="control-label" for="inputTelefono" title="Solo números"><i class="icon-phone"></i> Telefono</label>
 		<div class="controls">
 			<input type="text" class="span4" name="telefono" onkeypress="return isNumberKey(event)" value="<?echo $rows['telefono']?>">
 		</div>
@@ -69,7 +69,7 @@ include_once("head.php");
 	</div>
 	</div>
 	<div class="control-group">
-		<label class="control-label" for="inputEmail"><i class="icon-envelope-alt"></i> Email</label>
+		<label class="control-label" for="inputEmail" title="Solo email"><i class="icon-envelope-alt"></i> Email</label>
 		<div class="controls">
 			<input type="email" class="span4" name="email" value="<?echo $rows['email']?>">
 	</div>
