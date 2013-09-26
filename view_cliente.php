@@ -47,38 +47,38 @@ include_once("head.php");
 	<div class="control-group">
 		<label class="control-label" for="inputNombre"><i class="icon-user"></i> Nombre</label>
 		<div class="controls">
-			<input type="text" class="span4" name="nombre" value="<?echo $rows['nombre']?>" required>
+			<input type="text" class="span4" name="nombre" value="<?echo $rows['nombre']?>" disabled>
 		</div>
 	</div>
 	<div class="control-group">
 		<label class="control-label" for="inputApellido"><i class="icon-group"></i> Apellido</label>
 		<div class="controls">
-			<input type="text" class="span4" name="apellido" value="<?echo $rows['apellido']?>" required>	
+			<input type="text" class="span4" name="apellido" value="<?echo $rows['apellido']?>" disabled>	
 		</div>
 	</div>
 	<div class="control-group">
 		<label class="control-label" for="inputTelefono"><i class="icon-phone"></i> Telefono</label>
 		<div class="controls">
-			<input type="text" class="span4" name="telefono" onkeypress="return isNumberKey(event)" value="<?echo $rows['telefono']?>">
+			<input type="text" class="span4" name="telefono" onkeypress="return isNumberKey(event)" value="<?echo $rows['telefono']?>" disabled>
 		</div>
 	</div>
 	<div class="control-group">
 		<label class="control-label" for="inputDireccion"><i class="icon-truck"></i> Direccion</label>
 		<div class="controls">
-			<input type="text" class="span4" name="direccion" value="<?echo $rows['Direccion']?>">
+			<input type="text" class="span4" name="direccion" value="<?echo $rows['Direccion']?>" disabled>
 	</div>
 	</div>
 	<div class="control-group">
-		<label class="control-label" for="inputEmail"><i class="icon-envelope-alt"></i> Email</label>
+		<label class="control-label" for="inputEmail"><i class="icon-envelope-alt"></i> Email</label disabled>
 		<div class="controls">
-			<input type="email" class="span4" name="email" value="<?echo $rows['email']?>">
+			<input type="email" class="span4" name="email" value="<?echo $rows['email']?>" disabled>
 	</div>
 	</div>
 	<div class="control-group">
 		<div class="controls">
 			<input type="hidden" name="id" value="<?echo $id?>">
-			<input type="submit" class="btn" name="Modificar" value="modificar"  id="modificar">
-			<a class="btn btn-danger" href="" title="no guarda los cambios realizados" onClick="cerrarse()">volver</a>
+			<!--<input type="submit" class="btn" name="Modificar" value="modificar"  id="modificar">-->
+			<a class="btn btn-danger" href="" onClick="cerrarse()">volver</a>
 		</div>
 	</div>
 

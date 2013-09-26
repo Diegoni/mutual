@@ -76,11 +76,7 @@ include_once("menu.php");
  	echo '</table>';
 	
 	//fin de la tabla, mando la el id del cliente seleccionado
-<<<<<<< HEAD
     echo '<input type="submit" class="btn" name="conciliar" value="Buscar"  id="conciliar" disabled>';
-=======
-    echo '<input type="submit" class="btn" name="c" value="conciliar"  id="conciliar" disabled>';
->>>>>>> 88ce403ef96256593ccbbf65a7f969cdc29faa20
 	echo '<input type="hidden" name="busqueda" value="'.$cliente.'">';
 	echo '</form>';
 	}
@@ -108,6 +104,8 @@ include_once("menu.php");
 	//Guardo el DNI del cliente seleccionado en una variable para usarla mas adelante
 	while ($clientes = mysql_fetch_array($cliente)){
 	$dni=$clientes['dni'];
+	$nombre=$clientes['nombre'];
+	$apellido=$clientes['apellido'];
 	}
 	
 	//Busco dentro de las facturas aquellas que pertenescan al cliente
@@ -116,7 +114,7 @@ include_once("menu.php");
 	$result=mysql_query($query);
 	
 	//Titulos de la tabla
-	echo "<h2>Facturas de ".$busqueda.": <a href='#' class='show_hide' title='ver detalle'><i class='icon-chevron-sign-down'></i></a></h2><br><br>";
+	echo "<h3>Facturas de ".$apellido." - ".$nombre.": <a href='#' class='show_hide' title='ver detalle'><i class='icon-chevron-sign-down'></i></a></h3><br><br>";
 		
 	//recorro el arraw de las facturas
 	while ($rows = mysql_fetch_array($result))
@@ -185,7 +183,7 @@ include_once("menu.php");
 	$numero_filas = mysql_num_rows($result);
 	
 	//si me trajo registros es porque la tabla contiene registros que cohincidan con el dni, muestro cartel y envio datos para colocar en el formulario
-	if($numero_filas>0){
+	if($numero_filas>1){
 	echo "<h4>Hay clientes con el mismo dni: <a class='btn btn-danger' href='buscar.php?bandera=1&dato=".$dni."'>Conciliarlos</a></h4>";
 	}
 

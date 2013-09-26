@@ -40,7 +40,9 @@ include_once("menu.php");
  	{
  	echo '<tr>';
 	echo '<td>' . $rows['idclientes'] . '</td>';
-	echo '<td>' . $rows['idclientes_asignado'] . '</td>';
+	?>
+	<td><a href="#" title="Permite ver al cliente asignado" onClick="abrirVentana('view_cliente.php?id=<?echo $rows['idclientes_asignado'];?>')"><? echo $rows['idclientes_asignado'];?></td>
+	<?
  	echo '<td>' . $rows['nombre'] . '</td>';
  	echo '<td>' . $rows['apellido'] . '</td>';
  	echo '<td>' . $rows['dni'] . '</td>';
