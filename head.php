@@ -18,6 +18,10 @@ $total=0;
 <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 <title>Conciliador BD Mutual San Cayetano</title>
 
+<!-- Iconos -->
+<link type="image/x-icon" href="imagenes/favicon.ico" rel="icon" />
+<link type="image/x-icon" href="imagenes/favicon.ico" rel="shortcut icon" />
+
 <!-- Necesario para que funcione Jquery UI y Bootstrap -->
 <script src="bootstrap/js/jquery.js"></script>
 
